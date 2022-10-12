@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingerBackend", "FingerBack
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendTest", "BackendTest\BackendTest.csproj", "{3E75C229-4046-4D69-8C78-3FBFA44D48F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{E6EF2514-1855-4179-BD21-467F78764E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6EF2514-1855-4179-BD21-467F78764E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6EF2514-1855-4179-BD21-467F78764E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6EF2514-1855-4179-BD21-467F78764E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6EF2514-1855-4179-BD21-467F78764E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
