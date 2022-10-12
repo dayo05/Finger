@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FingerBackend", "FingerBackend\FingerBackend.csproj", "{445A1F48-0979-465C-948C-9334D893C1A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendTest", "BackendTest\BackendTest.csproj", "{3E75C229-4046-4D69-8C78-3FBFA44D48F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{445A1F48-0979-465C-948C-9334D893C1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{445A1F48-0979-465C-948C-9334D893C1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{445A1F48-0979-465C-948C-9334D893C1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{445A1F48-0979-465C-948C-9334D893C1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E75C229-4046-4D69-8C78-3FBFA44D48F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
