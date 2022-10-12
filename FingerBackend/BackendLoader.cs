@@ -4,6 +4,6 @@ namespace FingerBackend;
 
 public static class BackendLoader
 {
-    public static IBackend LoadAssembly(string assembly = "ext.dll")
-        => Activator.CreateInstance(Assembly.LoadFile(assembly).GetType("FingerBackend.Backend")) as IBackend;
+    public static IBackend LoadAssembly(string? assembly = null)
+        => Activator.CreateInstance(Assembly.LoadFile(assembly ?? Path.GetFullPath("ext.dll")).GetType("FingerBackend.Backend")) as IBackend;
 }
