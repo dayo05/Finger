@@ -13,7 +13,9 @@ namespace FINGERApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            BackendLoader.LoadAssembly();
+            var backend=BackendLoader.LoadAssembly();
+            MessageBox.Show( backend.Analyze("C:").Path);
+
             Application.Run(new Form1());
         }
     }
