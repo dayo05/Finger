@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿//#define V1
+
+using System.Diagnostics;
 
 namespace FingerBackend;
 
@@ -32,7 +34,11 @@ public class Backend: IBackend
         {
             try
             {
+                #if V1
+                return x.Replace(" ", "") == b.Key.Replace(" ", "") ? 1 : 0;
+                #else
                 return wordBias[x][b.Key] * b.Value;
+                #endif
             }
             catch (Exception)
             {
