@@ -9,7 +9,18 @@ public class ActualBackendTest
     [SetUp]
     public void Setup()
     {
-        backend = BackendLoader.LoadAssemblyRelative("../../../../ActualBackend/bin/Debug/net6.0/ActualBackend.dll");
+        if (backend is not null) return;
+        const string mode = 
+#if DEBUG 
+        "Debug"
+#else
+            "Release"
+#endif
+                ;
+        if(!File.Exists($"../../../../BackendTest/bin/{mode}/net6.0/BackendTest.dll") ||
+           !File.Exists($"../../../../ActualBackend/bin/{mode}/net6.0/ActualBackend.dll"))
+            Assert.Ignore("Please build whole solution before running unit test.");
+        backend = BackendLoader.LoadAssemblyRelative($"../../../../ActualBackend/bin/{mode}/net6.0/ActualBackend.dll");
     }
 
     [Test]

@@ -7,10 +7,17 @@ public class AssemblyTest
     public void Setup()
     {
         if (backend is not null) return;
-        if(!File.Exists("../../../../BackendTest/bin/Debug/net6.0/BackendTest.dll") ||
-           !File.Exists("../../../../ActualBackend/bin/Debug/net6.0/ActualBackend.dll"))
+        const string mode =
+#if DEBUG
+                "Debug"
+#else
+                "Release"
+#endif
+            ;
+        if(!File.Exists($"../../../../BackendTest/bin/{mode}/net6.0/BackendTest.dll") ||
+           !File.Exists($"../../../../ActualBackend/bin/{mode}/net6.0/ActualBackend.dll"))
             Assert.Ignore("Please build whole solution before running unit test.");
-        backend = BackendLoader.LoadAssemblyRelative("../../../../BackendTest/bin/Debug/net6.0/BackendTest.dll");
+        backend = BackendLoader.LoadAssemblyRelative($"../../../../BackendTest/bin/{mode}/net6.0/BackendTest.dll");
     }
 
     [Test]
