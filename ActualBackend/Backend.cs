@@ -37,7 +37,8 @@ public class Backend: IBackend
                 #if V1
                 return x.Replace(" ", "") == b.Key.Replace(" ", "") ? 1 : 0;
                 #else
-                return wordBias[x][b.Key] * b.Value;
+                if (!wordBias.ContainsKey(x) || !wordBias[x].ContainsKey(b.Key)) return b.Value * 0.1;
+                else return wordBias[x][b.Key] * b.Value;
                 #endif
             }
             catch (Exception)
