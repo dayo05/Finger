@@ -9,9 +9,10 @@ public class Backend: IBackend
 
     public Analyzed Analyze(string path)
     {
-        return new Analyzed(path)
+        return new Analyzed
         {
-            Words = new Dictionary<string, int>
+            Path = path,
+            Words = new Dictionary<string, double>
             {
                 { "안녕", 12 },
                 { "세계", 13 }
