@@ -2,7 +2,7 @@ namespace UnitTest;
 
 public class AssemblyTest
 {
-    private IBackend backend;
+    private IBackend? backend;
     [SetUp]
     public void Setup()
     {
@@ -11,13 +11,6 @@ public class AssemblyTest
            !File.Exists("../../../../ActualBackend/bin/Debug/net6.0/ActualBackend.dll"))
             Assert.Ignore("Please build whole solution before running unit test.");
         backend = BackendLoader.LoadAssemblyRelative("../../../../BackendTest/bin/Debug/net6.0/BackendTest.dll");
-    }
-
-    [Test]
-    public void LoadAssemblyTest()
-    {
-        Assert.Throws<InvalidOperationException>(() =>
-            BackendLoader.LoadAssemblyRelative("../../../../ActualBackend/bin/Debug/net6.0/ActualBackend.dll"));
     }
 
     [Test]

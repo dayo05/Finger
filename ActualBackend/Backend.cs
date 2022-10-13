@@ -41,7 +41,7 @@ public class Backend: IBackend
         }));
     }
 
-    private static IEnumerable<string> GetParsedStr(string str)
+    static IEnumerable<string> GetParsedStr(string str)
     {
         var prc = Process.Start(new ProcessStartInfo
         {
@@ -56,6 +56,8 @@ public class Backend: IBackend
     private static Dictionary<string, Dictionary<string, double>> wordBias = new();
     static Backend()
     {
+        if (!File.Exists("parsekor.jar"))
+            throw new FileNotFoundException("Token parser not found");
         //TODO: Initialize word bias here
     }
 }
