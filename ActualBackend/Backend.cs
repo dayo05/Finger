@@ -54,7 +54,9 @@ public class Backend: IBackend
         {
             FileName = "java",
             Arguments = $"-jar parsekor.jar {str}",
-            RedirectStandardOutput = true
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
         });
         prc.WaitForExit();
         return prc.StandardOutput.ReadToEnd().Split("\n");
