@@ -8,14 +8,14 @@ public class Backend: IBackend
 {
     public void BatchFile(string file, IEnumerable<Analyzed> dirs)
     {
-        var parsedFile = GetParsedStr(file);
+        var parsedFile = GetParsedStr(Path.GetFileNameWithoutExtension(file));
         File.Move(file, Path.Combine(dirs.MaxBy(x => CalculateBias(parsedFile, x.Words)).Path, Path.GetFileName(file)));
     }
 
     public Analyzed Analyze(string path)
     {
         var dictionary = new Dictionary<string, double>();
-        foreach (var s in Directory.GetFiles(path).SelectMany(GetParsedStr))
+        foreach (var s in Directory.GetFiles(path).Select(Path.GetFileNameWithoutExtension).SelectMany(GetParsedStr))
         {
             if (dictionary.ContainsKey(s)) dictionary[s]++;
             else dictionary[s] = 1;
@@ -54,7 +54,9 @@ public class Backend: IBackend
         {
             FileName = "java",
             Arguments = $"-jar parsekor.jar {str}",
-            RedirectStandardOutput = true
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
         });
         prc.WaitForExit();
         return prc.StandardOutput.ReadToEnd().Split("\n");
@@ -65,6 +67,8 @@ public class Backend: IBackend
     {
         if (!File.Exists("parsekor.jar"))
             throw new FileNotFoundException("Token parser not found");
+#if !V1
         //TODO: Initialize word bias here
+#endif
     }
 }
