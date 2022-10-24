@@ -4,6 +4,11 @@ namespace FINGERApp
 {
     internal static class Program
     {
+        public static IBackend Backend { get; init; }
+        static Program() {
+            Backend = BackendLoader.LoadAssembly();
+        }
+        
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -13,8 +18,7 @@ namespace FINGERApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            var backend=BackendLoader.LoadAssembly();
-            MessageBox.Show( backend.Analyze("C:").Path);
+            MessageBox.Show( Backend.Analyze("C:").Path);
 
             Application.Run(new Form1());
         }
