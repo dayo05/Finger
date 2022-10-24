@@ -1,4 +1,4 @@
-﻿//#define V1
+﻿#define V1
 
 using System.Diagnostics;
 

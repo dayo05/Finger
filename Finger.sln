@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FingerBackend", "FingerBack
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendTest", "BackendTest\BackendTest.csproj", "{3E75C229-4046-4D69-8C78-3FBFA44D48F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FINGERApp", "FINGERApp\FINGERApp.csproj", "{AF913643-D7EE-43D3-A6E3-3DCD0161AE77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FINGERApp", "FINGERApp\FINGERApp.csproj", "{AF913643-D7EE-43D3-A6E3-3DCD0161AE77}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{872ECEEA-0AE0-4006-82E3-FB034BEA3499}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActualBackend", "ActualBackend\ActualBackend.csproj", "{4051AFCD-12E5-4D36-8B83-77DD9BEA29D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActualBackend", "ActualBackend\ActualBackend.csproj", "{4051AFCD-12E5-4D36-8B83-77DD9BEA29D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamuWikiParser", "NamuWikiParser\NamuWikiParser.csproj", "{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NamuWikiParser", "NamuWikiParser\NamuWikiParser.csproj", "{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{4051AFCD-12E5-4D36-8B83-77DD9BEA29D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4051AFCD-12E5-4D36-8B83-77DD9BEA29D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4051AFCD-12E5-4D36-8B83-77DD9BEA29D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}.Debug|Any CPU.ActiveCfg = Release|x64
-		{7AEB40C5-0F07-442B-9626-6A8AF8FFF50B}.Debug|Any CPU.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
