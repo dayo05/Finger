@@ -41,11 +41,12 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -91,7 +92,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Drag&Drop으로 현재 경로 변경";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             this.label2.DragDrop += new System.Windows.Forms.DragEventHandler(this.dragDropFolder);
             // 
             // tableLayoutPanel1
@@ -151,6 +151,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.openHistory);
             // 
             // tableLayoutPanel2
             // 
@@ -225,15 +226,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(627, 27);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 107);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(627, 244);
-            this.listBox1.TabIndex = 6;
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -276,13 +268,33 @@
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.cleanFolder);
             // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(23, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(616, 229);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "files";
+            this.label8.UseCompatibleTextRendering = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(12, 110);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(627, 79);
+            this.listBox1.TabIndex = 9;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.changed);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 388);
-            this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label2);
@@ -319,10 +331,11 @@
         private Label label6;
         private TableLayoutPanel tableLayoutPanel3;
         private PictureBox pictureBox4;
-        private ListBox listBox1;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label7;
         private PictureBox pictureBox5;
         private FolderBrowserDialog folderBrowserDialog1;
+        private Label label8;
+        private ListBox listBox1;
     }
 }
