@@ -34,8 +34,8 @@ public class Backend: IBackend
         {
             try
             {
-                #if V1
-                return x.Replace(" ", "") == b.Key.Replace(" ", "") ? 1 : 0;
+#if V1
+                return x.Replace(" ", "").Trim() == b.Key.Replace(" ", "").Trim() ? 1 : 0;
                 #else
                 if (!wordBias.ContainsKey(x) || !wordBias[x].ContainsKey(b.Key)) return b.Value * 0.1;
                 else return wordBias[x][b.Key] * b.Value;

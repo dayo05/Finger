@@ -34,6 +34,7 @@ namespace FINGERApp
 
         private void findFolder(object sender, EventArgs e)
         {
+            MessageBox.Show("asdf");
             //folderBrowserDialog1.ShowDialog();
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -53,6 +54,7 @@ namespace FINGERApp
 
         private void textBox3_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("asdf");
             findFolder(sender, e);
         }
 
@@ -61,5 +63,19 @@ namespace FINGERApp
             MessageBox.Show("asdf");
             findFolder(sender, e);
         }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+    /*
+    public static class FrontEnd
+    {
+        List<string> getFileList(string path)
+        {
+            DirectoryInfo dir = new DirectoryInfo(path);
+            dir.GetFiles().Select(x=>x.Name);
+        }
+    }*/
 }
