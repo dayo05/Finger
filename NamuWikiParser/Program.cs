@@ -83,8 +83,10 @@ void Pharse3()
 
     var totalRunningTask = 0;
 
-    const int startPos = 0;
-    for (var i = startPos; i < startPos + 20; i++)
+    const int startPos = 40;
+    const int prccnt = 40;
+    
+    for (var i = startPos; i < startPos + prccnt; i++)
     {
         var fix = i;
         while (totalRunningTask >= 4)
@@ -125,7 +127,6 @@ void Pharse3()
                 }
             }
 
-            Console.WriteLine("Enter final pharse: " + fix);
             foreach (var x in fdic)
             foreach (var y in x.Value)
             {
@@ -143,7 +144,7 @@ void Pharse3()
     
     while (totalRunningTask != 0)
         Thread.Sleep(1); //Wait for all tasks finished
-    File.WriteAllText($"{startPos}to{startPos+19}.txt", string.Join("\n", dic.SelectMany(x => x.Value.Select(y => $"{x.Key}|{y.Key}|{y.Value}"))));
+    File.WriteAllText($"{startPos}to{startPos + prccnt - 1}.txt", string.Join("\n", dic.SelectMany(x => x.Value.Select(y => $"{x.Key}|{y.Key}|{y.Value}"))));
 
     IEnumerable<string> GetParsedStr(string str)
     {
