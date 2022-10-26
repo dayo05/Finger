@@ -67,7 +67,7 @@ void Pharse2()
         foreach (var s in file
                      .Split(new[] { "\n", ".", ",", "?", "!" },
                          StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Select(x =>
-                         string.Concat(x.Select(x => char.IsLetter(x) ? x : ' '))))
+                         string.Concat(x.Select(x => char.IsLetterOrDigit(x) ? x : ' '))))
             sb.AppendLine(Regex.Replace(s, @"\s+", " ").Trim());
         File.WriteAllText(Path.Combine(parsedJsonText, $"{fix++}.txt"), sb.ToString());
         if(fix % 10000 == 0) Console.WriteLine($"Processing: {fix}");
