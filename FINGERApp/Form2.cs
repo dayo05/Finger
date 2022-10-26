@@ -11,7 +11,6 @@ using FingerBackend;
 
 namespace FINGERApp
 {
-    
     public partial class Form2 : Form
     {
         private string[] history;
@@ -26,9 +25,9 @@ namespace FINGERApp
         {
             label8.Text = "";
             folderBrowserDialog1 = new FolderBrowserDialog();
-            if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 label6.Text=folderBrowserDialog1.SelectedPath;
-            var dir=Directory.GetFiles(label6.Text);
+            var dir = Directory.GetFiles(label6.Text);
             foreach (var f in dir)
                 label8.Text += Path.GetFileName(f) + "\n";
             addHistory(label6.Text);
@@ -55,12 +54,11 @@ namespace FINGERApp
         {
             foreach(var s in Directory.GetFiles("C:\\Users\\maxma\\Downloads\\test1"))
                 Program.Backend.BatchFile(s, Program.analyzed);
-            return;
         }
 
         private void dragDropFolder(object sender, DragEventArgs e)
         {
-
+            
         }
 
         private void openHistory(object sender, EventArgs e)
