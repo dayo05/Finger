@@ -10,9 +10,9 @@ using System.Text.RegularExpressions;
 Console.WriteLine("Start Parsing!!");
 
 const string jsonName = "/Users/dayo/namuwiki_20210301.json";
-const string baseJsonText = "/Users/dayo/namuwiki/";
-const string parsedJsonText = "/Users/dayo/nw_parsed";
-const string analyzedJsonText = "/Users/dayo/nw_anzd";
+const string baseJsonText = "/home/dayo/namuwiki/";
+const string parsedJsonText = "/home/dayo/nw_parsed";
+const string analyzedJsonText = "/home/dayo/nw_anzd";
 
 #if PH1
 Pharse1();
@@ -88,13 +88,13 @@ void Pharse3()
 
     var totalRunningTask = 0;
 
-    const int startPos = 40;
-    const int prccnt = 40;
+    const int startPos = 600;
+    const int prccnt = 600;
     
     for (var i = startPos; i < startPos + prccnt; i++)
     {
         var fix = i;
-        while (totalRunningTask >= 4)
+        while (totalRunningTask >= 8)
             Thread.Sleep(1);
 
         Interlocked.Add(ref totalRunningTask, 1);
