@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 Console.WriteLine("Start Parsing!!");
 
 const string jsonName = "/Users/dayo/namuwiki_20210301.json";
-const string baseJsonText = "/Users/dayo/namuwiki/";
+const string baseJsonText = "/home/dayo/namuwiki/";
 const string parsedJsonText = "/home/dayo/nw_parsed";
 const string analyzedJsonText = "/home/dayo/nw_anzd";
 
@@ -83,8 +83,8 @@ void Pharse3()
 
     var totalRunningTask = 0;
 
-    const int startPos = 120;
-    const int prccnt = 60;
+    const int startPos = 600;
+    const int prccnt = 600;
     
     for (var i = startPos; i < startPos + prccnt; i++)
     {
