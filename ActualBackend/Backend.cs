@@ -15,6 +15,13 @@ public class Backend: IBackend
     public Analyzed Analyze(string path)
     {
         var dictionary = new Dictionary<string, double>();
+        
+        foreach (var x in GetParsedStr(Path.GetDirectoryName(path)))
+        {
+            if (dictionary.ContainsKey(x)) dictionary[x]++;
+            else dictionary[x] = 1;
+        }
+        
         foreach (var s in Directory.GetFiles(path).Select(Path.GetFileNameWithoutExtension).SelectMany(GetParsedStr))
         {
             if (dictionary.ContainsKey(s)) dictionary[s]++;

@@ -61,6 +61,11 @@ void Pharse2()
     while (fix < 1000000)
     {
         var fd = Path.Combine(baseJsonText, $"{fix}.txt");
+        if (!File.Exists(fd))
+        {
+            fix++;
+            continue;
+        }
         if (!File.Exists(fd)) continue;
         var file = File.ReadAllText(fd);
         var sb = new StringBuilder();
