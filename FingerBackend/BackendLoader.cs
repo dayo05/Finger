@@ -11,4 +11,6 @@ public static class BackendLoader
 
     public static IBackend LoadAssemblyRelative(string? assembly = "ext.dll")
         => LoadAssembly(Path.GetFullPath(assembly));
+
+    public static string? BiasPath = null; //must be initialized on FE.
 }

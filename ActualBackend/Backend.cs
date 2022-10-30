@@ -1,4 +1,4 @@
-﻿#define V1
+﻿//#define V1
 
 using System.Diagnostics;
 
@@ -43,10 +43,10 @@ public class Backend: IBackend
             {
 #if V1
                 return x.Replace(" ", "").Trim() == b.Key.Replace(" ", "").Trim() ? 1 : 0;
-                #else
+#else
                 if (!wordBias.ContainsKey(x) || !wordBias[x].ContainsKey(b.Key)) return b.Value * 0.1;
                 else return wordBias[x][b.Key] * b.Value;
-                #endif
+#endif
             }
             catch (Exception)
             {
@@ -69,13 +69,23 @@ public class Backend: IBackend
         return prc.StandardOutput.ReadToEnd().Split("\n");
     }
 
-    private static Dictionary<string, Dictionary<string, double>> wordBias = new();
+    private static Dictionary<string, Dictionary<string, double>> wordBias;
     static Backend()
     {
         if (!File.Exists("parsekor.jar"))
             throw new FileNotFoundException("Token parser not found");
 #if !V1
-        //TODO: Initialize word bias here
+        using var sr = new StreamReader(BackendLoader.BiasPath);
+        wordBias = new();
+        while (!sr.EndOfStream)
+        {
+            var l = sr.ReadLine().Split('|').ToList();
+            if (l.Count < 3) continue;
+            if (!wordBias.ContainsKey(l[0]))
+                wordBias[l[0]] = new();
+            
+            wordBias[l[0]][l[1]] = double.Parse(l[2]);
+        }
 #endif
     }
 }
