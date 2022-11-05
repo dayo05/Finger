@@ -15,7 +15,7 @@ namespace FINGERApp
             }
         }
 
-        private void findFolder(object sender, EventArgs e)
+        private void FindFolder(object sender, EventArgs e)
         {
             folderBrowserDialog1.Reset();
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) 
@@ -29,10 +29,10 @@ namespace FINGERApp
             var dir = Directory.GetFiles(label6.Text);
             foreach (var f in dir)
                 label8.Text += Path.GetFileName(f) + "\n";
-            addHistory(label6.Text);
+            AddHistory(label6.Text);
         }
 
-        private void addHistory(string newPath)
+        private void AddHistory(string newPath)
         {
             listBox1.Items.Clear();
             var temp = this.history.Where(str => str != newPath).ToList();
@@ -51,7 +51,7 @@ namespace FINGERApp
             this.history = File.ReadAllLines("PathHistory.txt").Where(x => !string.IsNullOrWhiteSpace(x));
         }
 
-        private void cleanFolder(object sender, EventArgs e)
+        private void CleanFolder(object sender, EventArgs e)
         {
             if (label6.Text == "현재 경로")
                 MessageBox.Show("시작하기 전에 경로를 설정해 주세요!");
@@ -89,12 +89,12 @@ namespace FINGERApp
                 });
             }).Start();
 
-        private void dragDropFolder(object sender, DragEventArgs e)
+        private void DragDropFolder(object sender, DragEventArgs e)
         {
-            
+            //TODO
         }
 
-        private void openHistory(object sender, EventArgs e)
+        private void OpenHistory(object sender, EventArgs e)
         {
             listBox1.Visible = !listBox1.Visible;
             if (listBox1.Visible)
@@ -111,7 +111,7 @@ namespace FINGERApp
             }
         }
 
-        private void changed(object sender, EventArgs e)
+        private void Changed(object sender, EventArgs e)
         {
             ApplyDirectory(listBox1.SelectedItem.ToString());
         }

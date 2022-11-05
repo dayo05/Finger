@@ -93,7 +93,7 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Drag&Drop으로 현재 경로 변경";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.DragDrop += new System.Windows.Forms.DragEventHandler(this.dragDropFolder);
+            this.label2.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropFolder);
             // 
             // tableLayoutPanel1
             // 
@@ -109,7 +109,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(114, 27);
             this.tableLayoutPanel1.TabIndex = 3;
-            this.tableLayoutPanel1.Click += new System.EventHandler(this.findFolder);
+            this.tableLayoutPanel1.Click += new System.EventHandler(this.FindFolder);
             // 
             // label3
             // 
@@ -124,7 +124,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "찾아보기";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Click += new System.EventHandler(this.findFolder);
+            this.label3.Click += new System.EventHandler(this.FindFolder);
             // 
             // pictureBox4
             // 
@@ -138,7 +138,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.findFolder);
+            this.pictureBox4.Click += new System.EventHandler(this.FindFolder);
             // 
             // pictureBox2
             // 
@@ -152,7 +152,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.openHistory);
+            this.pictureBox2.Click += new System.EventHandler(this.OpenHistory);
             // 
             // tableLayoutPanel2
             // 
@@ -240,7 +240,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(114, 145);
             this.tableLayoutPanel4.TabIndex = 7;
-            this.tableLayoutPanel4.Click += new System.EventHandler(this.cleanFolder);
+            this.tableLayoutPanel4.Click += new System.EventHandler(this.CleanFolder);
             // 
             // label7
             // 
@@ -253,7 +253,7 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "정리하기";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label7.Click += new System.EventHandler(this.cleanFolder);
+            this.label7.Click += new System.EventHandler(this.CleanFolder);
             // 
             // pictureBox5
             // 
@@ -267,7 +267,7 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 1;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.cleanFolder);
+            this.pictureBox5.Click += new System.EventHandler(this.CleanFolder);
             // 
             // label8
             // 
@@ -286,7 +286,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(627, 79);
             this.listBox1.TabIndex = 9;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.changed);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.Changed);
             // 
             // actionProgress
             // 
