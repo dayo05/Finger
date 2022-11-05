@@ -19,4 +19,9 @@ public class Backend: IBackend
             }
         };
     }
+
+    public void BatchDirectory(string dir, IEnumerable<Analyzed> dirs)
+    {
+
+    }
 }
