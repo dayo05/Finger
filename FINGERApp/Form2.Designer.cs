@@ -47,6 +47,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.label8 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.actionProgress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -116,7 +117,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(35, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 27);
@@ -173,7 +174,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(52, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 100);
@@ -186,7 +187,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 15);
+            this.label5.Size = new System.Drawing.Size(38, 15);
             this.label5.TabIndex = 1;
             this.label5.Text = "label5";
             // 
@@ -272,7 +273,7 @@
             // 
             this.label8.Location = new System.Drawing.Point(23, 110);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(616, 229);
+            this.label8.Size = new System.Drawing.Size(616, 208);
             this.label8.TabIndex = 8;
             this.label8.Text = "files";
             this.label8.UseCompatibleTextRendering = true;
@@ -287,11 +288,19 @@
             this.listBox1.TabIndex = 9;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.changed);
             // 
+            // actionProgress
+            // 
+            this.actionProgress.Location = new System.Drawing.Point(23, 328);
+            this.actionProgress.Name = "actionProgress";
+            this.actionProgress.Size = new System.Drawing.Size(613, 23);
+            this.actionProgress.TabIndex = 10;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 388);
+            this.Controls.Add(this.actionProgress);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tableLayoutPanel4);
@@ -302,6 +311,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form2";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -337,5 +347,6 @@
         private FolderBrowserDialog folderBrowserDialog1;
         private Label label8;
         private ListBox listBox1;
+        private ProgressBar actionProgress;
     }
 }
