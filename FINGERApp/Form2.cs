@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using FingerBackend;
+using System.Data;
 
 namespace FINGERApp
 {
@@ -13,6 +14,27 @@ namespace FINGERApp
             {
                 this.history = File.ReadAllLines("PathHistory.txt").Where(x => !string.IsNullOrWhiteSpace(x));
             }
+
+            AllowDrop = true;
+            DragEnter += (s, e) =>
+            {
+                dragDropImage.Visible = true;
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                    e.Effect = DragDropEffects.Move;
+            };
+            DragDrop += (s, e) =>
+            {
+                dragDropImage.Visible = false;
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                {
+                    AddTasks((e.Data.GetData(DataFormats.FileDrop) as string[]).Select<string, Action?>(x => File.Exists(x) ? () => Batch(x, Program.Backend.BatchFile) : Directory.Exists(x) ? () => Batch(x, Program.Backend.BatchDirectory) : null));
+                    BatchAll();
+                }
+            };
+            DragLeave += (s, e) =>
+            {
+                dragDropImage.Visible = false;
+            };
         }
 
         private void FindFolder(object sender, EventArgs e)
@@ -24,12 +46,21 @@ namespace FINGERApp
 
         private void ApplyDirectory(string directory)
         {
-            label6.Text = directory;
+            ReloadInformation(directory);
+            AddHistory(directory);
+        }
+
+        private void ReloadInformation(string? directory = null)
+        {
+            directory ??= label6.Text;
+            if (directory == "현재 경로") return;
             label8.Text = "";
-            var dir = Directory.GetFiles(label6.Text);
-            foreach (var f in dir)
-                label8.Text += Path.GetFileName(f) + "\n";
-            AddHistory(label6.Text);
+            if (Directory.Exists(directory))
+            {
+                var dir = Directory.GetFiles(directory);
+                foreach (var f in dir)
+                    label8.Text += Path.GetFileName(f) + "\n";
+            }
         }
 
         private void AddHistory(string newPath)
@@ -57,41 +88,67 @@ namespace FINGERApp
                 MessageBox.Show("시작하기 전에 경로를 설정해 주세요!");
             else
             {
-                int totalFiles = Directory.GetFiles(label6.Text).Length;
-                if(totalFiles == 0)
-                {
-                    MessageBox.Show("정리할 파일이 없습니다.");
-                    return;
-                }
-                actionProgress.Maximum = totalFiles;
-                workingFiles = totalFiles;
-                actionProgress.Value = 0;
-                actionProgress.Step = 1;
-                tableLayoutPanel4.Enabled = false;
-                foreach (var s in Directory.GetFiles(label6.Text))
-                    BatchAsync(s);
+                AddTasks(Directory.GetFiles(label6.Text).ToList().Select<string, Action>(x => () => Batch(x, Program.Backend.BatchFile)));
+                AddTasks(Directory.GetDirectories(label6.Text).ToList().Select<string, Action>(x => () => Batch(x, Program.Backend.BatchDirectory)));
+
+                BatchAll();
             }
         }
 
-        private int workingFiles = 0;
-        private void BatchAsync(string s)
-            => new Task(() =>
+        List<Action> tasks = new();
+        private void AddTask(Action act)
+        {
+            if (workingFiles != 0) throw new InvalidOperationException("Task is already running");
+            tasks.Add(act);
+        }
+        private void AddTasks(IEnumerable<Action> act)
+        {
+            if (workingFiles != 0) throw new InvalidOperationException("Task is already running");
+            tasks.AddRange(act);
+        }
+        private void BatchAll()
+        {
+            if (workingFiles != 0) return;
+            int totalActions = tasks.Count;
+            if(totalActions == 0)
             {
-                Program.Backend.BatchFile(s, Program.analyzed);
-                Invoke(() => {
-                    actionProgress.PerformStep();
-                    ApplyDirectory(label6.Text);
-                    if(--workingFiles == 0)
+                MessageBox.Show("정리할 파일이 없습니다.");
+                return;
+            }
+            actionProgress.Maximum = totalActions;
+            actionProgress.Value = 0;
+            actionProgress.Step = 1;
+            tableLayoutPanel4.Enabled = false;
+            new Task(() =>
+            {
+                foreach(var x in tasks)
+                {
+                    while(workingFiles >= 4) Task.Yield();
+                    Interlocked.Increment(ref workingFiles);
+                    new Task(() =>
                     {
-                        MessageBox.Show("완료되었습니다!");
-                        tableLayoutPanel4.Enabled = true;
-                    }
+                        x();
+                        Interlocked.Decrement(ref workingFiles);
+                    }).Start();
+                }
+                while(workingFiles > 0) Task.Yield();
+                MessageBox.Show("완료되었습니다!");
+                Invoke(() =>
+                {
+                    tasks.Clear();
+                    tableLayoutPanel4.Enabled = true;
                 });
             }).Start();
+        }
 
-        private void DragDropFolder(object sender, DragEventArgs e)
+        private int workingFiles = 0;
+        private void Batch(string s, Action<string, IEnumerable<Analyzed>> action)
         {
-            //TODO
+            action(s, Program.analyzed);
+            Invoke(() =>
+            {
+                actionProgress.PerformStep();
+            });
         }
 
         private void OpenHistory(object sender, EventArgs e)
@@ -120,6 +177,11 @@ namespace FINGERApp
         {
             if (history.Count() != 0)
                 ApplyDirectory(history.First());
+            dragDropImage.Visible = false;
+
+            timer1.Interval = 500;
+            timer1.Tick += (s, e) => ReloadInformation();
+            timer1.Enabled = true;
         }
     }
 }

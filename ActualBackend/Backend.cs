@@ -12,6 +12,12 @@ public class Backend: IBackend
         File.Move(file, Path.Combine(dirs.MaxBy(x => CalculateBias(parsedFile, x.Words)).Path, Path.GetFileName(file)));
     }
 
+    public void BatchDirectory(string dir, IEnumerable<Analyzed> dirs)
+    {
+        var parsedFile = GetParsedStr(Path.GetFileNameWithoutExtension(dir));
+        Directory.Move(dir, Path.Combine(dirs.MaxBy(x => CalculateBias(parsedFile, x.Words)).Path, Path.GetFileName(dir)));
+    }
+
     public Analyzed Analyze(string path)
     {
         var dictionary = new Dictionary<string, double>();

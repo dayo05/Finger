@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.actionProgress = new System.Windows.Forms.ProgressBar();
+            this.dragDropImage = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -57,6 +60,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dragDropImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -93,7 +97,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Drag&Drop으로 현재 경로 변경";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropFolder);
             // 
             // tableLayoutPanel1
             // 
@@ -295,11 +298,25 @@
             this.actionProgress.Size = new System.Drawing.Size(613, 23);
             this.actionProgress.TabIndex = 10;
             // 
+            // dragDropImage
+            // 
+            this.dragDropImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dragDropImage.Image = global::FINGERApp.Properties.Resources.drop;
+            this.dragDropImage.Location = new System.Drawing.Point(9, 9);
+            this.dragDropImage.Name = "dragDropImage";
+            this.dragDropImage.Size = new System.Drawing.Size(750, 367);
+            this.dragDropImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.dragDropImage.TabIndex = 11;
+            this.dragDropImage.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 388);
+            this.Controls.Add(this.dragDropImage);
             this.Controls.Add(this.actionProgress);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label8);
@@ -323,6 +340,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dragDropImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -348,5 +366,7 @@
         private Label label8;
         private ListBox listBox1;
         private ProgressBar actionProgress;
+        private PictureBox dragDropImage;
+        private System.Windows.Forms.Timer timer1;
     }
 }
