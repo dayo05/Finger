@@ -24,8 +24,8 @@ namespace FINGERApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 #if ENABLE_BACKEND
-            analyzed.Add(Backend.Analyze("C:\\Users\\dayo\\finger\\test1"));
-            analyzed.Add(Backend.Analyze("C:\\Users\\dayo\\finger\\test2"));
+            analyzed.Add(Backend.Analyze("C:\\Users\\maxma\\Downloads\\test1"));
+            analyzed.Add(Backend.Analyze("C:\\Users\\maxma\\Downloads\\test2"));
 #endif
             Application.Run(new Form2());
         }
