@@ -6,6 +6,7 @@ namespace FINGERApp
     {
         public static IBackend Backend { get; }
         static Program() {
+            BackendLoader.BiasPath = "bias.txt";
             Backend = BackendLoader.LoadAssembly();
         }
 
@@ -19,8 +20,8 @@ namespace FINGERApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            analyzed.Add(Backend.Analyze("C:\\Users\\maxma\\Downloads\\test2"));
-            analyzed.Add(Backend.Analyze("C:\\Users\\maxma\\Downloads\\test3"));
+            analyzed.Add(Backend.Analyze("C:\\Users\\dayo\\finger\\test1"));
+            analyzed.Add(Backend.Analyze("C:\\Users\\dayo\\finger\\test2"));
 
             Application.Run(new Form2());
         }
