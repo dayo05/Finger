@@ -26,6 +26,7 @@ namespace FINGERApp
         {
             label6.Text = directory;
             label8.Text = "";
+
             var dir = Directory.GetFiles(label6.Text);
             foreach (var f in dir)
                 label8.Text += Path.GetFileName(f) + "\n";
