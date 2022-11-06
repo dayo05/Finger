@@ -88,11 +88,18 @@ namespace FINGERApp
                 MessageBox.Show("시작하기 전에 경로를 설정해 주세요!");
             else
             {
-                AddTasks(Directory.GetFiles(label6.Text).ToList().Select<string, Action>(x => () => Batch(x, Program.Backend.BatchFile)));
-                AddTasks(Directory.GetDirectories(label6.Text).ToList().Select<string, Action>(x => () => Batch(x, Program.Backend.BatchDirectory)));
-
+                AddTasksFromDirectory(label6.Text);
                 BatchAll();
             }
+        }
+
+        private void AddTasksFromDirectory(string dir)
+        {
+            AddTasks(Directory.GetFiles(dir).ToList().Select<string, Action>(x => () => Batch(x, Program.Backend.BatchFile)));
+
+            if (!GlobalSettings.DecompressDirectory)
+                AddTasks(Directory.GetDirectories(dir).ToList().Select<string, Action>(x => () => Batch(x, Program.Backend.BatchDirectory)));
+            else foreach (var x in Directory.GetDirectories(dir)) AddTasksFromDirectory(x);
         }
 
         List<Action> tasks = new();
@@ -123,7 +130,7 @@ namespace FINGERApp
             {
                 foreach(var x in tasks)
                 {
-                    while(workingFiles >= 4) Task.Yield();
+                    while(workingFiles >= GlobalSettings.MaxTaskCount) Task.Yield();
                     Interlocked.Increment(ref workingFiles);
                     new Task(() =>
                     {
@@ -144,7 +151,7 @@ namespace FINGERApp
         private int workingFiles = 0;
         private void Batch(string s, Action<string, IEnumerable<Analyzed>> action)
         {
-            action(s, Program.analyzed);
+            action.Batch(s);
             Invoke(() =>
             {
                 actionProgress.PerformStep();

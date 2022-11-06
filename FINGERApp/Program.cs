@@ -13,7 +13,19 @@ namespace FINGERApp
 #endif
         }
 
-        public static List<Analyzed> analyzed = new();
+        public static void Reanalyze()
+        {
+            analyzed.Clear();
+            analyzed.AddRange(GlobalSettings.AnalyzePath.Select(Backend.Analyze));
+        }
+
+        private static List<Analyzed> analyzed = new();
+        public static void Batch(this Action<string, IEnumerable<Analyzed>> action, string s)
+        {
+            action(s, analyzed);
+        }
+
+        
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -24,8 +36,10 @@ namespace FINGERApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 #if ENABLE_BACKEND
-            analyzed.Add(Backend.Analyze("C:\\Users\\maxma\\Downloads\\test1"));
-            analyzed.Add(Backend.Analyze("C:\\Users\\maxma\\Downloads\\test2"));
+            GlobalSettings.AddPathToAnalyze("C:\\Users\\maxma\\Downloads\\test1");
+            GlobalSettings.AddPathToAnalyze("C:\\Users\\maxma\\Downloads\\test2");
+
+            GlobalSettings.Reanalyze();
 #endif
             Application.Run(new Form2());
         }
