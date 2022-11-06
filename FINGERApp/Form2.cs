@@ -183,5 +183,10 @@ namespace FINGERApp
             timer1.Tick += (s, e) => ReloadInformation();
             timer1.Enabled = true;
         }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
