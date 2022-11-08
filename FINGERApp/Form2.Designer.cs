@@ -308,7 +308,7 @@
             this.dragDropImage.Image = global::FINGERApp.Properties.Resources.drop;
             this.dragDropImage.Location = new System.Drawing.Point(9, 9);
             this.dragDropImage.Name = "dragDropImage";
-            this.dragDropImage.Size = new System.Drawing.Size(750, 367);
+            this.dragDropImage.Size = new System.Drawing.Size(750, 370);
             this.dragDropImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.dragDropImage.TabIndex = 11;
             this.dragDropImage.TabStop = false;
@@ -329,8 +329,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 388);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.dragDropImage);
+            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.actionProgress);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label8);

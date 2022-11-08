@@ -36,9 +36,13 @@ namespace FINGERApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 #if ENABLE_BACKEND
-            GlobalSettings.AddPathToAnalyze("C:\\Users\\maxma\\Downloads\\test1");
-            GlobalSettings.AddPathToAnalyze("C:\\Users\\maxma\\Downloads\\test2");
-
+            
+            var targets = File.ReadAllLines("TargetFolderPath.txt");
+            foreach (string target in targets)
+            {
+                GlobalSettings.AddPathToAnalyze(target);
+            }
+            
             GlobalSettings.Reanalyze();
 #endif
             Application.Run(new Form2());
