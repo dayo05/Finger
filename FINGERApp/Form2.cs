@@ -193,7 +193,8 @@ namespace FINGERApp
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-
+            SettingsForm f2 = new SettingsForm();
+            f2.Show();
         }
     }
 }
